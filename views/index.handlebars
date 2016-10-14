@@ -1,0 +1,43 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col s12 center-align">
+
+      <h1>Eat Da Burger</h1>
+      <div class="row">
+        <div class="col s6">
+          <h5>Burgers to Eat</h5>
+          <ul>
+            {{#each burgers}}
+              <li>
+                <span class="label" id="id">{{this.id}}</span>
+                <span class="burger_name">{{this.burger_name}}</span>
+
+                <form action="/eat/{{this.id}}?_method=PUT" method="POST">
+                  <input type="hidden" name="id" value="{{this.id}}">
+                  <button class="waves-effect waves-light btn" type="submit">Devour</button>
+                </form>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+        <div class="col s6">
+          <h5>Burgers in my tummy</h5>
+          <ul class="eaten">
+            {{#each eaten}}
+              <li>
+                <span class="label" id="id">{{this.id}}</span>
+                <span class="burger_name">{{this.burger_name}}</span>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div><!-- End Row -->
+
+      <form action="/addburger" method="POST">
+        <input type="textarea" name="burger_name"></input>
+        <button type="submit" name="submit">Submit</button>
+      </form>
+    </div> <!-- End Column -->
+  </div> <!-- End Row -->
+</div> <!-- End Container -->
